@@ -1,0 +1,11 @@
+version: '3'
+services:
+  vue-nginx:
+    image: nginx:latest
+    container_name: vue-app
+    ports:
+      - "80:80"
+    volumes:
+      - ./dist:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped

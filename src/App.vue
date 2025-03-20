@@ -9,6 +9,7 @@ import Toast from 'primevue/toast';
 import { useToast } from 'primevue';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
+import FloatLabel from 'primevue/floatlabel';
 
 const text = ref<string>('')
 const toast = useToast()
@@ -134,16 +135,20 @@ const menubarItems = ref<MenuItem[]>([
 <template>
   <Toast />
   <Splitter style="height: 900px" class="mb-8">
-    <SplitterPanel class="flex items-center justify-center" :size="15">
+    <SplitterPanel class="flex justify-center p-4" :size="22">
       <div class="card flex justify-center">
         <PanelMenu :model="panelItems" multiple class="w-full md:w-80" />
       </div>
     </SplitterPanel>
-    <SplitterPanel class="flex items-center justify-center" :size="85">
+    <!-- <SplitterPanel class="flex items-center justify-center" :size="85"> -->
+      <SplitterPanel class="p-4" :size="78">
       <Menubar :model="menubarItems">
         <template #end>
-            <InputText id="game_search" v-model="text" placeholder="Search" />
-            <Button label="Submit" severity="info" variant="outlined" raised />
+          <FloatLabel variant="on">
+            <InputText id="game_search" v-model="text" />
+            <label for="game_search">Search</label>
+            <Button label="Submit" variant="outlined" raised />
+          </FloatLabel>
         </template>
       </Menubar>
     </SplitterPanel>
@@ -155,7 +160,4 @@ button, input {
   margin: 0 2px;
 }
 
-.p-splitterpanel {
-  padding: 20px 20px;
-}
 </style>

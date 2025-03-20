@@ -14,9 +14,13 @@ import FloatLabel from 'primevue/floatlabel';
 import SearchBar from './components/SearchBar.vue';
 import DataPicker from 'primevue/datepicker';
 import AutoComplete from 'primevue/autocomplete';
+import { useMenuStore } from './stores/counter';
 
 const text = ref<string>('')
 const toast = useToast()
+
+const menuStore = useMenuStore();
+const command = (e: { item: MenuItem }) => menuStore.setMenu(e.item.label as string);
 
 const panelItems = ref<MenuItem[]>([
   {
@@ -38,7 +42,8 @@ const panelItems = ref<MenuItem[]>([
         icon: 'pi pi-file',
         label: 'Echoes of Wisdom',
       }
-    ]
+    ],
+    command,
   },
   {
     key: 'mario',
@@ -59,7 +64,8 @@ const panelItems = ref<MenuItem[]>([
         icon: 'pi pi-file',
         label: 'Mario Kart 8 Deluxe',
       }
-    ]
+    ],
+    command,
   },
   {
     key: 'pokemon',
@@ -80,7 +86,9 @@ const panelItems = ref<MenuItem[]>([
         icon: 'pi pi-file',
         label: 'Mario Kart 8 Deluxe',
       }
-    ]
+    ],
+    // command: function() { menuStore.setMenu(this.label) },
+    command,
   },
   {
     key: 'splatoon',
@@ -89,6 +97,7 @@ const panelItems = ref<MenuItem[]>([
     command: () => toast.add({ severity: 'error', summary: 'Not Implemented', detail: 'Splatoon is not implemented yet', life: 3000 }),
   }
 ]);
+
 
 
 const menubarItems = ref<MenuItem[]>([
@@ -134,7 +143,7 @@ const menubarItems = ref<MenuItem[]>([
   }
 ])
 
-const menuName = ref<string>('Pokemon');
+const menuName = ref<string>('Test');
 const types = ref<string[]>(['Grass', 'Fire', 'Water', 'Electric']);
 const selectedType = ref<string>('')
 const dates = ref();

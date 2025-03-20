@@ -10,3 +10,18 @@ export const useCounterStore = defineStore('counter', () => {
 
   return { count, doubleCount, increment }
 })
+
+export const useMenuStore = defineStore('menu', () => {
+  const selectedMenu = ref<string>('');
+  const _breadCrumb = ref<string[]>([]);
+
+  function setMenu(menu: string) {
+    selectedMenu.value = menu;
+  }
+
+  function setBreadCrumb(breadCrumb: string[]) {
+    _breadCrumb.value = breadCrumb;
+  }
+
+  return { selectedMenu, setMenu, setBreadCrumb };
+})

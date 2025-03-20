@@ -13,6 +13,7 @@ import SplitterPanel from 'primevue/splitterpanel';
 import FloatLabel from 'primevue/floatlabel';
 import SearchBar from './components/SearchBar.vue';
 import DataPicker from 'primevue/datepicker';
+import AutoComplete from 'primevue/autocomplete';
 
 const text = ref<string>('')
 const toast = useToast()
@@ -137,6 +138,9 @@ const menuName = ref<string>('Pokemon');
 const types = ref<string[]>(['Grass', 'Fire', 'Water', 'Electric']);
 const selectedType = ref<string>('')
 const dates = ref();
+const searchItems = ref<string[]>([]);
+
+const search = (e: { query: string }) => { searchItems.value = [...Array(2).keys()].map((item) => e.query + '-' + item) }
 
 </script>
 
@@ -167,6 +171,7 @@ const dates = ref();
             <DataPicker input-id="period" v-model="dates" selection-mode="range" :manual-input="false" show-time fluid />
             <label for="period">Date</label>
           </FloatLabel>
+          <AutoComplete v-model="selectedType" dropdown :suggestions="searchItems" @complete="search" />
       </SearchBar>
     </SplitterPanel>
   </Splitter>

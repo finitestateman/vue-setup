@@ -25,7 +25,6 @@ const slots = useSlots();
 let gridCols = 'grid-cols-';
 
 onMounted(() => {
-//   gridCols += slots.default ? slots.default().length : 6;
   gridCols += (slots.default?.().length ?? 6);
 });
 </script>

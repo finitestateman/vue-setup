@@ -155,6 +155,15 @@ const search = (e: { query: string }) => { searchItems.value = [...Array(2).keys
 
 <template>
   <Toast />
+  <Menubar :model="menubarItems" class="mb-4">
+    <template #end>
+      <FloatLabel variant="on">
+        <InputText id="game_search" v-model="text" />
+        <label for="game_search">Search</label>
+        <Button label="Submit" variant="outlined" raised />
+      </FloatLabel>
+    </template>
+  </Menubar>
   <Splitter style="height: 900px" class="mb-8">
     <SplitterPanel class="flex justify-center p-4" :size="15">
       <div class="card flex justify-center">
@@ -164,15 +173,6 @@ const search = (e: { query: string }) => { searchItems.value = [...Array(2).keys
     </SplitterPanel>
     <!-- <SplitterPanel class="flex items-center justify-center" :size="85"> -->
       <SplitterPanel class="p-4" :size="85">
-      <Menubar :model="menubarItems">
-        <template #end>
-          <FloatLabel variant="on">
-            <InputText id="game_search" v-model="text" />
-            <label for="game_search">Search</label>
-            <Button label="Submit" variant="outlined" raised />
-          </FloatLabel>
-        </template>
-      </Menubar>
       <SearchBar v-bind:name="menuName" class="mt-4">
           <Select v-model="selectedType" :options="types" class="" placeholder="Type" />
           <Select class="" placeholder="Name" />

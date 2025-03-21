@@ -155,7 +155,7 @@ const search = (e: { query: string }) => { searchItems.value = [...Array(2).keys
 
 <template>
   <Toast />
-  <Menubar :model="menubarItems" class="mb-4">
+  <Menubar :model="menubarItems" class="mb-4" >
     <template #end>
       <FloatLabel variant="on">
         <InputText id="game_search" v-model="text" />

@@ -21,12 +21,18 @@ import { useMenuStore } from '../stores/counter';
 interface Props {
     name: string;
 }
-const props = defineProps<Props>();
-console.log(props.name);
+const Dsdf = defineProps<Props>();
+console.log(Dsdf.name);
 const menuStore = useMenuStore();
+const isgood = true;
+console.log(isgood);
 
 const slots = useSlots();
 let gridCols = 'grid-cols-';
+
+(function Abc() {
+
+})();
 
 onMounted(() => {
   gridCols += (slots.default?.().length ?? 6);

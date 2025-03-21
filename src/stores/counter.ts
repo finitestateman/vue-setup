@@ -14,6 +14,8 @@ export const useCounterStore = defineStore('counter', () => {
 export const useMenuStore = defineStore('menu', () => {
   const selectedMenu = ref<string>('');
   const _breadCrumb = ref<string[]>([]);
+  const itGood =  true;
+  console.log(itGood);
 
   function setMenu(menu: string) {
     selectedMenu.value = menu;
